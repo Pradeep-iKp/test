@@ -9,11 +9,13 @@ DB_CHANNEL_ID = os.environ.get("DB_CHANNEL_ID")
 #################################### FOR PRIVATE ################################################
 @Client.on_message((filters.document|filters.video|filters.audio|filters.photo) & filter.command(['link', 'store']) & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
-   replied = message.reply_to_message
-
+   replied = m.reply_to_message
    if not replied:
+      return await m.relpy('hmm')
 
-        return await message.reply('Reply to a message to get a shareable link.')
+   # if not replied:
+
+       # return await message.reply('Reply to a message to get a shareable link.')
 
     if m.document:
        media = m.document
