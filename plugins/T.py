@@ -7,7 +7,7 @@ DB_CHANNEL_ID = os.environ.get("DB_CHANNEL_ID")
 
 
 #################################### FOR PRIVATE ################################################
-@Client.on_message((filters.document|filters.video|filters.audio|filters.photo) & filters.incoming & ~filters.edited & ~filters.channel)
+@Client.on_message((filters.document|filters.video|filters.audio|filters.photo) & filter.command(['link', 'store']) & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
    replied = message.reply_to_message
 
